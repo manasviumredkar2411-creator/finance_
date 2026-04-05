@@ -1,0 +1,211 @@
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Finance Dashboard</title>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+}
+
+/* Heading */
+h1 {
+  padding: 20px 30px;
+  color: #0f172a;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  gap: 30px;
+  padding: 0 30px;
+}
+
+/* LEFT SIDE */
+.left {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cards */
+.card {
+  background: linear-gradient(135deg, #ffffff, #e0f2fe);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.balance {
+  color: #0284c7;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.income {
+  color: #16a34a;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.expense {
+  color: #dc2626;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 70%;
+}
+
+/* Chart */
+.chart-section {
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Table */
+.table-section {
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+th {
+  background: #0284c7;
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover {
+  background: #f1f5f9;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Finance Dashboard</h1>
+
+<div class="layout">
+
+  <!-- LEFT SIDE -->
+  <div class="left">
+    <div class="card">
+      Total Balance<br>
+      <span class="balance">₹50,000</span>
+    </div>
+
+    <div class="card">
+      Income<br>
+      <span class="income">₹70,000</span>
+    </div>
+
+    <div class="card">
+      Expenses<br>
+      <span class="expense">₹20,000</span>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right">
+    <div class="chart-section">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-section">
+  <h2>Transactions</h2>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Amount</th>
+    </tr>
+
+    <tr>
+      <td>01 Apr</td>
+      <td>Shopping</td>
+      <td style="color:red;">-₹2000</td>
+    </tr>
+
+    <tr>
+      <td>02 Apr</td>
+      <td>Salary</td>
+      <td style="color:green;">+₹70000</td>
+    </tr>
+
+    <tr>
+      <td>03 Apr</td>
+      <td>Food</td>
+      <td style="color:red;">-₹500</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Chart Script -->
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [{
+      label: 'Balance Trend',
+      data: [20000, 30000, 25000, 50000],
+      borderColor: '#0284c7',
+      backgroundColor: 'rgba(2,132,199,0.2)',
+      fill: true,
+      tension: 0.4
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: { color: '#0f172a' }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
+
